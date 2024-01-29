@@ -1,11 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MockQueryable.Moq;
 using Moq;
-using NUnit.Framework.Legacy;
-using NUnit.Framework;
 using ProvaPub.Models;
 using ProvaPub.Repository;
 using ProvaPub.Services;
-using MockQueryable.Moq;
 
 namespace ProvaPub.Tests
 {
@@ -101,8 +99,7 @@ namespace ProvaPub.Tests
 
             var result = await _customerService.CanPurchase(customerId, purchaseValue);
 
-            ClassicAssert.AreEqual(false, result);
-
+            Assert.That(result, Is.False);
         }
 
         [Test]
@@ -139,9 +136,7 @@ namespace ProvaPub.Tests
 
             var result = await _customerService.CanPurchase(customerId, purchaseValue);
 
-            ClassicAssert.AreEqual(false, result);
-
-
+            Assert.That(result, Is.False);
         }
     }
 }
